@@ -1,54 +1,44 @@
 const path = require('path');
-const webpack = require('webpack');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  target: 'web',
+  mode: 'development',
+  entry: './src/js/app.js',
   devtool: 'inline-source-map',
   output: {
+    filename: 'main.js',
+    publicPath: 'dist/',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
-    historyApiFallback: true,
-    contentBase: path.join(__dirname, '/dist'),
-    open: true,
-    compress: true,
+    static: './dist',
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Development',
+    }),
+  ],
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.html$/,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'img/resource',
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
         use: [
           {
-            loader: 'html-loader',
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
           },
         ],
       },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader, 'css-loader', 'style-loader'
-        ],
-      },
     ],
-  },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html',
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-  ],
-};
+  }
+}; 

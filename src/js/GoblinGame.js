@@ -1,5 +1,5 @@
 // TODO: write code here
-export default class goblinGame {
+export default class GoblinGame {
   constructor() {
     this.position = -1;
     this.field = 0;
