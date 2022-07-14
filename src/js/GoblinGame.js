@@ -30,10 +30,10 @@ export default class GoblinGame {
   }
 
   imgCreate(interval) {
-    // const goblin = document.createElement('img');
-    // goblin.src = './assets/goblin.png';  **выпадает ошибка 404 при попытке загрузить картинку при развертывании проекта
-    const goblin = document.getElementById('x01');
-    goblin.classList.remove('hidden');
+    const goblin = document.createElement('img');
+    goblin.src = './assets/goblin.png';  //выпадает ошибка 404 при попытке загрузить картинку при развертывании проекта
+    // const goblin = document.getElementById('x01');
+    // goblin.classList.remove('hidden');
       setInterval(() => {
         const position = this.goblinSetter();
         this.field.childNodes[position].appendChild(goblin);
