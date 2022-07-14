@@ -16,3 +16,7 @@ body {
     margin: 1px;  
     border: 1px black;    
 }
+
+.hidden{
+    display: none;
+}

@@ -7,7 +7,6 @@ module.exports = {
   devtool: 'inline-source-map',
   output: {
     filename: 'main.js',
-    publicPath: 'dist/',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
@@ -21,14 +20,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'img/resource',
-      },
-      {
         test: /\.(png|jpg|gif)$/i,
         use: [
           {
@@ -38,6 +29,14 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'assets/resource',
       },
     ],
   }
