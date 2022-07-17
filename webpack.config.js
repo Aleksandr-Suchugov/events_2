@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/js/app.js',
   devtool: 'inline-source-map',
   output: {
-    filename: 'main.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
@@ -20,23 +20,24 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-            },
-          },
-        ],
-      },
-      {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'assets/resource',
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            }
+          },
+        ],
+       type: 'javascript/auto'
       },
     ],
   }

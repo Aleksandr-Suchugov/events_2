@@ -1,6 +1,5 @@
 import '../css/style.css';
 import GoblinGame from './GoblinGame';
-import 'bootstrap';
 
 window.addEventListener("load", () => {
     const goblinGame = new GoblinGame();

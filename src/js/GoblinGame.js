@@ -1,4 +1,5 @@
 // TODO: write code here
+import image from '../assets/goblin.png';
 export default class GoblinGame {
   constructor() {
     this.position = -1;
@@ -7,11 +8,16 @@ export default class GoblinGame {
   }
 
   goblinSetter() {
-    let position = Math.ceil((Math.random() * this.board ** 2) - 1);
+    // let position = -1;
+    // do {
+    //   position = Math.floor(Math.random() * (this.boarSize ** 2 + 1));
+    // }
+    // while (position === this.position);
+    let position = Math.floor(Math.random() * (this.boarSize ** 2 + 1));
     if (position === this.lastPosition) {
-      position = this.rand();
+      position = this.goblinSetter();
     }
-    this.lastPosition = position;
+    // this.position = position;
     return position;
   }
 
@@ -30,8 +36,9 @@ export default class GoblinGame {
   }
 
   imgCreate(interval) {
-    const goblin = document.createElement('img');
-    goblin.src = './assets/goblin.png';  //выпадает ошибка 404 при попытке загрузить картинку при развертывании проекта
+    const goblin = new Image();
+    // const goblin = document.createElement('img');
+    goblin.src = image;  //выпадает ошибка 404 при попытке загрузить картинку при развертывании проекта
     // const goblin = document.getElementById('x01');
     // goblin.classList.remove('hidden');
       setInterval(() => {
