@@ -13,8 +13,8 @@ install:
 
 build: off
 
-test_script:
-  - yarn run lint && yarn test # скрипт сборки
+# test_script:
+#   - yarn run lint && yarn test # скрипт сборки
 
 build_script:
   - yarn run build   # команда сборки
