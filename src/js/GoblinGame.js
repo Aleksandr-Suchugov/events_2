@@ -1,5 +1,5 @@
-// TODO: write code here
 import image from '../assets/goblin.png';
+
 export default class GoblinGame {
   constructor() {
     this.position = -1;
@@ -38,12 +38,12 @@ export default class GoblinGame {
   imgCreate(interval) {
     const goblin = new Image();
     // const goblin = document.createElement('img');
-    goblin.src = image;  //выпадает ошибка 404 при попытке загрузить картинку при развертывании проекта
+    goblin.src = image;
     // const goblin = document.getElementById('x01');
     // goblin.classList.remove('hidden');
-      setInterval(() => {
-        const position = this.goblinSetter();
-        this.field.childNodes[position].appendChild(goblin);
+    setInterval(() => {
+      const position = this.goblinSetter();
+      this.field.childNodes[position].appendChild(goblin);
     }, interval);
   }
 }
