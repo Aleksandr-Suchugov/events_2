@@ -4,5 +4,5 @@ import GoblinGame from './GoblinGame';
 window.addEventListener('load', () => {
   const goblinGame = new GoblinGame();
   goblinGame.boardGeneration(4);
-  goblinGame.imgCreate(2000);
+  goblinGame.imgCreate(1000);
 });

@@ -8,16 +8,10 @@ export default class GoblinGame {
   }
 
   goblinSetter() {
-    // let position = -1;
-    // do {
-    //   position = Math.floor(Math.random() * (this.boarSize ** 2 + 1));
-    // }
-    // while (position === this.position);
     let position = Math.floor(Math.random() * (this.boarSize ** 2 + 1));
     if (position === this.lastPosition) {
       position = this.goblinSetter();
     }
-    // this.position = position;
     return position;
   }
 
