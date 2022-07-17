@@ -3,6 +3,6 @@ import GoblinGame from './GoblinGame';
 
 window.addEventListener('load', () => {
   const goblinGame = new GoblinGame();
-  goblinGame.boardGeneration(4);
+  goblinGame.boardGeneration(8);
   goblinGame.imgCreate(1000);
 });
