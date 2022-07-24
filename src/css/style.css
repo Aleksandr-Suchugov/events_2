@@ -1,5 +1,6 @@
 body { 
-    cursor: none;
+    /* cursor: none; */
+    cursor: url('../assets/hummer.png'), url('../assets/hummer.svg'), auto;
 }
 
 .board{
@@ -15,15 +16,4 @@ body {
     background-color: rgb(182, 191, 97); 
     margin: 1px;  
     border: 1px black;    
-}
-
-#goblin{
-    background: url(/src/assets/goblin.png) no-repeat;
-    width: 100px;
-    height: 100px;
-    margin: 25px auto;
-}
-
-#goblin:hover{
-    cursor:  url(/src/assets/hummer.svg), crosshair;
 }
