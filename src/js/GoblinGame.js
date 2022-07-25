@@ -8,6 +8,7 @@ export default class GoblinGame {
     this.successShot = 0;
     this.bossShot = 0;
     this.rounds = 0;
+    this.gameResults = document.createElement('p');
   }
 
   goblinSetter() {
@@ -31,32 +32,42 @@ export default class GoblinGame {
       cell.classList.add('cell');
       this.field.appendChild(cell);
     }
-    const gameResults = document.createElement('p');
-    gameResults.classList.add('score');
-    document.body.insertAdjacentHTML('beforeEnd', gameResults);
+    document.body.appendChild(this.gameResults);
   }
 
   imgCreate(interval) {
     const goblin = new Image();
     goblin.src = image;
-    const gameResults = document.getElementsByClassName('score');
-    setInterval(() => {
+    goblin.id = 'x01';
+    goblin.classList.add('red-head');
+    let intervalId = setInterval(() => {
       const position = this.goblinSetter();
       this.field.childNodes[position].appendChild(goblin);
       this.rounds++;
-      gameResults.textContent = `Попадания: ${this.successShot} / Промахи: ${this.bossShot} / Число попыток: ${this.rounds}`;
+      this.gameResults.textContent = `Попадания: ${this.successShot} / Промахи: ${this.bossShot} / Число попыток: ${this.rounds}`;
+      if (this.bossShot > 4) {
+        clearInterval(intervalId);
+        intervalId = null;
+        document.body.insertAdjacentHTML("beforeEnd",
+          `<div class="modal_mask">
+            <div class="modal">
+              <div class="modal_msg">Ты был не точен, игра окончена.</div>
+              <button class="close_btn">Закрыть</button>
+            </div>
+          </div>`
+        );
+        const clsModalBtn = document.querySelector('.close_btn');
+        clsModalBtn.addEventListener('click', (ev) => ev.target.closest('div.modal_mask').remove());
+      }
     }, interval);
   }
 
   shootsRecorder() {
-    const board = document.getElementsByClassName('board');
-    board.addEventListner('click', (ev) => {
-      ev.currentTarget.parantElement === board ? this.bossShot++ : this.successShot++;
+    const image = document.getElementById('x01');
+    document.body.addEventListener('click', (ev) => {
+      ev.target.classList.contains('red-head') ? this.successShot++ : this.bossShot++;
     })
-    if (this.bossShot === 5) {
-      alert('Поражение((');
-      return location.reload();
-    }
+    
   }
 
 }
