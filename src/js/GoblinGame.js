@@ -38,13 +38,8 @@ export default class GoblinGame {
   imgCreate(interval) {
     const goblin = new Image();
     goblin.src = image;
-    goblin.id = 'x01';
     goblin.classList.add('red-head');
     let intervalId = setInterval(() => {
-      const position = this.goblinSetter();
-      this.field.childNodes[position].appendChild(goblin);
-      this.rounds++;
-      this.gameResults.textContent = `Попадания: ${this.successShot} / Промахи: ${this.bossShot} / Число попыток: ${this.rounds}`;
       if (this.bossShot > 4) {
         clearInterval(intervalId);
         intervalId = null;
@@ -59,11 +54,14 @@ export default class GoblinGame {
         const clsModalBtn = document.querySelector('.close_btn');
         clsModalBtn.addEventListener('click', (ev) => ev.target.closest('div.modal_mask').remove());
       }
+      const position = this.goblinSetter();
+      this.field.childNodes[position].appendChild(goblin);
+      this.rounds++;
+      this.gameResults.textContent = `Попадания: ${this.successShot} / Промахи: ${this.bossShot} / Число попыток: ${this.rounds}`;
     }, interval);
   }
 
   shootsRecorder() {
-    const image = document.getElementById('x01');
     document.body.addEventListener('click', (ev) => {
       ev.target.classList.contains('red-head') ? this.successShot++ : this.bossShot++;
     })
