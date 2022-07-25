@@ -1,6 +1,6 @@
 body { 
     /* cursor: none; */
-    cursor: url('../assets/hummer.png'), url('../assets/hummer.svg'), auto;
+    cursor: url('../assets/hummer.png'), auto;
 }
 
 .board{
