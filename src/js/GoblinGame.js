@@ -33,7 +33,7 @@ export default class GoblinGame {
     }
     const gameResults = document.createElement('p');
     gameResults.classList.add('score');
-    documen.body.insertAdjacentHTML('beforeEnd', gameResults);
+    document.body.insertAdjacentHTML('beforeEnd', gameResults);
   }
 
   imgCreate(interval) {
