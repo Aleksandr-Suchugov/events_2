@@ -43,29 +43,30 @@ export default class GoblinGame {
       if (this.bossShot > 4) {
         clearInterval(intervalId);
         intervalId = null;
-        document.body.insertAdjacentHTML("beforeEnd",
+        document.body.insertAdjacentHTML(
+          'beforeEnd',
           `<div class="modal_mask">
             <div class="modal">
               <div class="modal_msg">Ты был не точен, игра окончена.</div>
               <button class="close_btn">Закрыть</button>
             </div>
-          </div>`
+          </div>`,
         );
         const clsModalBtn = document.querySelector('.close_btn');
         clsModalBtn.addEventListener('click', (ev) => ev.target.closest('div.modal_mask').remove());
       }
       const position = this.goblinSetter();
       this.field.childNodes[position].appendChild(goblin);
-      this.rounds++;
+      this.rounds += 1;
       this.gameResults.textContent = `Попадания: ${this.successShot} / Промахи: ${this.bossShot} / Число попыток: ${this.rounds}`;
     }, interval);
   }
 
   shootsRecorder() {
     document.body.addEventListener('click', (ev) => {
-      ev.target.classList.contains('red-head') ? this.successShot++ : this.bossShot++;
-    })
-    
+      if (ev.target.classList.contains('red-head')) {
+        this.successShot += 1;
+      } else this.bossShot += 1;
+    });
   }
-
 }
