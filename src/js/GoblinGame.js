@@ -66,7 +66,9 @@ export default class GoblinGame {
     document.body.addEventListener('click', (ev) => {
       if (ev.target.classList.contains('red-head')) {
         this.successShot += 1;
-      } else this.bossShot += 1;
+      } else if (ev.target.classList.contains('cell')) {
+        this.bossShot += 1;
+      }
     });
   }
 }
